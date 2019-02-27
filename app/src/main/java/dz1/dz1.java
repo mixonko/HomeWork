@@ -18,18 +18,15 @@ public class dz1 extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dz1);
-
         text1 = (TextView) findViewById(R.id.text1);
         text2 = (TextView) findViewById(R.id.text2);
         bt = (Button) findViewById(R.id.button);
-
         View.OnClickListener clickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 change();
             }
         };
-
         text1.setOnClickListener(clickListener);
         text2.setOnClickListener(this);
         bt.setOnClickListener(new View.OnClickListener() {
