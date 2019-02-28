@@ -2,4 +2,6 @@
     <string name="app_name">HomeWork</string>
     <string name="first">Первый</string>
     <string name="second">Второй</string>
+    <string name="dz1">dz1</string>
+    <string name="dz2">dz2</string>
 </resources>
