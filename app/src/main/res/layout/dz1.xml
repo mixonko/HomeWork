@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/first"
-        android:text="@string/first"
+        android:text="@string/dz1_first"
         android:textSize="35sp" />
 
     <TextView
@@ -18,14 +18,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/second"
-        android:text="@string/second"
+        android:text="@string/dz1_second"
         android:textSize="35sp" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Поменять"
+        android:text="@string/dz1_change"
         android:textAllCaps="false"
         android:textSize="25sp" />
 </LinearLayout>

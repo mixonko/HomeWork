@@ -11,7 +11,6 @@ import test.com.homework.R;
 
 public class ChangeDzActivity extends Activity implements View.OnClickListener {
     private Button dz1, dz2;
-    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +28,10 @@ public class ChangeDzActivity extends Activity implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.dz1:
-                new Intent(this, Dz1Activity.class);
+                startActivity(new Intent(this, Dz1Activity.class));
                 break;
             case R.id.dz2:
-                new Intent(this, Dz2Activity.class);
+                startActivity(new Intent(this, Dz2Activity.class));
                 break;
         }
     }
