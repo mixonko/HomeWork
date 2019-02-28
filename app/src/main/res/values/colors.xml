@@ -5,4 +5,7 @@
     <color name="colorAccent">#D81B60</color>
     <color name="first">#4245dc</color>
     <color name="second">#d8d21b</color>
+    <color name="dz3_white">#ffffff</color>
+    <color name="dz3_blue">#5ba6fc</color>
+    <color name="dz3_brown">#d2ad52</color>
 </resources>
