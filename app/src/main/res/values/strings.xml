@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">HomeWork</string>
+    <string name="first">Первый</string>
+    <string name="second">Второй</string>
 </resources>
