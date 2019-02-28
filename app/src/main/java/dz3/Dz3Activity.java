@@ -8,8 +8,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Transformation;
 
 import test.com.homework.R;
 
@@ -32,18 +32,25 @@ public class Dz3Activity extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressBar.setVisibility(View.VISIBLE);
                 Picasso.get()
                         .load(editText.getText().toString())
-                        .resize(500, 500) 
+                        .resize(700, 700)
                         .centerCrop()
                         .transform(new CircularTransformation(0))
-                        .into(imageView);
-
+                        .into(imageView, callback);
             }
         });
-
-
     }
 
+    Callback callback = new Callback() {
+        @Override
+        public void onSuccess() {
+            progressBar.setVisibility(View.INVISIBLE);
+        }
 
+        @Override
+        public void onError(Exception e) {
+        }
+    };
 }

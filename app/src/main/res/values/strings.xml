@@ -7,5 +7,5 @@
     <string name="dz2_text_dz2">dz2</string>
     <string name="dz2_text_dz3">dz3</string>
     <string name="dz3_button_download">Загрузить</string>
-    <string name="dz3_text_link">Введите ссылку</string>
+    <string name="dz3_text_link">https://i.imgur.com/enarCUc.jpg</string>
 </resources>
