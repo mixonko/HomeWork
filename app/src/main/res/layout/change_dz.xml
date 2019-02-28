@@ -21,5 +21,11 @@
         android:id="@+id/dz3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/dz2_text_dz3" />
+        android:text="@string/dz3_text_dz3" />
+
+    <Button
+        android:id="@+id/dz3Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dz3_text_login" />
 </LinearLayout>

@@ -12,10 +12,13 @@
     <style name="Dz3EditText">
         <item name="android:textColor">@color/dz3_white</item>
         <item name="android:fontFamily">@font/monda_regular</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
     </style>
 
 
     <style name="Dz3LogPass" parent="Dz3EditText">
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">50dp</item>
         <item name="android:background">#32ffffff</item>
         <item name="android:textColorHint">@color/dz3_white</item>
@@ -24,18 +27,18 @@
     </style>
 
 
-    <style name="Dz3Button"  >
+    <style name="Dz3Button">
         <item name="android:layout_height">50dp</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:textColor">@color/dz3_white</item>
-        <item name="android:drawablePadding">10dp</item>
         <item name="android:fontFamily">@font/monda_bold</item>
     </style>
 
-    <style name="Dz3Button2" parent="Dz3Button" >
+    <style name="Dz3Button2" parent="Dz3Button">
         <item name="android:background">@color/dz3_brown</item>
     </style>
 
-    <style name="Dz3Button3" parent="Dz3Button" >
+    <style name="Dz3Button3" parent="Dz3Button">
         <item name="android:background">@color/dz3_blue</item>
     </style>
 </resources>

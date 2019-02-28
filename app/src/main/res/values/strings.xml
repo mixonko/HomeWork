@@ -5,7 +5,8 @@
     <string name="dz1_change">Поменять</string>
     <string name="dz2_text_dz1">dz1</string>
     <string name="dz2_text_dz2">dz2</string>
-    <string name="dz2_text_dz3">dz3</string>
+    <string name="dz3_text_dz3">dz3</string>
+    <string name="dz3_text_login">dz3Login</string>
     <string name="dz3_button_download">Загрузить</string>
     <string name="dz3_text_link">https://i.imgur.com/enarCUc.jpg</string>
     <string name="dz3_text_Username">Username</string>
