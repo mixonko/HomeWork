@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">HomeWork</string>
-    <string name="first">Первый</string>
-    <string name="second">Второй</string>
+    <string name="dz1_first">Первый</string>
+    <string name="dz1_second">Второй</string>
+    <string name="dz1_change">Поменять</string>
+    <string name="dz2_text_dz1">dz1</string>
+    <string name="dz2_text_dz2">dz2</string>
 </resources>
