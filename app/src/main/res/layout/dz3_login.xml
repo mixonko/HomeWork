@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/login_bg" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="17dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:src="@drawable/login_logo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <EditText
+                style="@style/Dz3LogPass"
+                android:drawableLeft="@drawable/ic_login_name"
+                android:hint="@string/dz3_text_Username"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                style="@style/Dz3LogPass"
+                android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_login_password"
+                android:hint="@string/dz3_text_Password"
+                android:inputType="textPassword" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="30dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                style="@style/Dz3Button3"
+                android:text="@string/dz3_button1" />
+
+            <TextView
+                style="@style/Dz3EditText"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:text="@string/dz3_text_forgot" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <Button
+                style="@style/Dz3Button2"
+                android:text="@string/dz3_button2" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>
