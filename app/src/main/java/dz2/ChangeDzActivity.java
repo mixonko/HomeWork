@@ -9,10 +9,11 @@ import android.widget.Button;
 import dz1.Dz1Activity;
 import dz3.Dz3Activity;
 import dz3.LoginActivity;
+import dz4.Dz4Activity;
 import test.com.homework.R;
 
 public class ChangeDzActivity extends Activity implements View.OnClickListener {
-    private Button dz1, dz2, dz3, dz3Login;
+    private Button dz1, dz2, dz3, dz3Login, dz4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +24,13 @@ public class ChangeDzActivity extends Activity implements View.OnClickListener {
         dz2 = (Button) findViewById(R.id.dz2);
         dz3 = (Button) findViewById(R.id.dz3);
         dz3Login = (Button) findViewById(R.id.dz3Login);
+        dz4 = (Button) findViewById(R.id.dz4);
 
         dz1.setOnClickListener(this);
         dz2.setOnClickListener(this);
         dz3.setOnClickListener(this);
         dz3Login.setOnClickListener(this);
+        dz4.setOnClickListener(this);
     }
 
     @Override
@@ -44,6 +47,9 @@ public class ChangeDzActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.dz3Login:
                 startActivity(new Intent(this, LoginActivity.class));
+                break;
+            case R.id.dz4:
+                startActivity(new Intent(this, Dz4Activity.class));
                 break;
         }
     }
