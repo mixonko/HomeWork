@@ -14,7 +14,8 @@ import java.util.Random;
 
 
 public class Diagram extends View {
-    float paddingLeft, paddingTop, paddingRight, paddingBottom, startAngle, degrees;
+    float paddingLeft, paddingTop, paddingRight, paddingBottom,
+             startAngle, degrees, canvasRotate = 0;
     Paint paint;
     int sum, min;
 
@@ -38,6 +39,7 @@ public class Diagram extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         paint = new Paint();
+        paint.setTextSize(60);
         min = Math.min(getWidth(), getHeight());
         paddingLeft = min/6;
         paddingTop = getHeight()/2 - min/6*2;
@@ -64,13 +66,21 @@ public class Diagram extends View {
         }
 
         //линии
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < share.size(); i++) {
             paint.setColor(Color.BLACK);
             paint.setStrokeWidth(5);
             canvas.rotate((degrees * share.get(i))/2, getWidth()/2, getHeight()/2);
             canvas.drawLine(getWidth()/2, paddingTop, getWidth()/2 ,paddingTop - 35, paint);
             canvas.drawCircle(getWidth()/2, paddingTop - 35, 10, paint);
+
+            canvasRotate =  canvasRotate + (degrees * share.get(i))/2;
+
+            canvas.rotate(0 - canvasRotate, getWidth()/2,paddingTop - 35- 15 );
+            canvas.drawText(String.valueOf(share.get(i)), getWidth()/2, paddingTop - 35- 15, paint);
+            canvas.rotate(canvasRotate, getWidth()/2,paddingTop - 35- 15 );
+            canvasRotate =  canvasRotate + (degrees * share.get(i))/2;
             canvas.rotate((degrees * share.get(i))/2, getWidth()/2, getHeight()/2);
+
         }
 
 
@@ -78,8 +88,8 @@ public class Diagram extends View {
 
     private List<Integer> getList (){
         List <Integer> share = new ArrayList<Integer>();
-        for (int i = 0; i < 5; i++) {
-            share.add((int)(Math.random()*(10 - 3 + 1) + 3)) ;
+        for (int i = 0; i < 6; i++) {
+            share.add((int)(Math.random()*(15 - 3 + 1) + 3)) ;
         }
         return share;
     }
@@ -87,5 +97,6 @@ public class Diagram extends View {
     public int getRandomColor(){
         Random rnd = new Random();
         return Color.argb(255, rnd.nextInt(256),
-                rnd.nextInt(256), rnd.nextInt(256)); }
+                rnd.nextInt(256), rnd.nextInt(256));
+    }
 }
