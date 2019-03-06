@@ -76,8 +76,9 @@ public class Diagram extends View {
             canvasRotate =  canvasRotate + (degrees * share.get(i))/2;
 
             canvas.rotate(0 - canvasRotate, getWidth()/2,paddingTop - 35- 15 );
-            canvas.drawText(String.valueOf(share.get(i)), getWidth()/2, paddingTop - 35- 15, paint);
-            canvas.rotate(canvasRotate, getWidth()/2,paddingTop - 35- 15 );
+            canvas.drawText(String.valueOf(share.get(i)), getWidth()/2 , paddingTop - 4 , paint);
+            canvas.rotate(canvasRotate, getWidth()/2 ,paddingTop - 35- 15 );
+
             canvasRotate =  canvasRotate + (degrees * share.get(i))/2;
             canvas.rotate((degrees * share.get(i))/2, getWidth()/2, getHeight()/2);
 
