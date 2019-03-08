@@ -11,8 +11,8 @@ import java.util.Calendar;
 
 public class Clock extends View {
     private float width, height, min, radius;
-    private Paint paint;
-    Calendar calendar;
+    private Paint paint = new Paint();
+    private Calendar calendar;
     int hours, minutes, seconds;
 
     public Clock(Context context) {
@@ -34,11 +34,10 @@ public class Clock extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        paint = new Paint();
-
-        drawClock(canvas, paint);
-        drawHours(canvas, paint);
-        drawMinutesSeconds(canvas, paint);
+		drawClock(canvas, paint);
+            drawHours(canvas, paint);
+            drawMinutesSeconds(canvas, paint);
+ 
     }
 
     private void drawClock(Canvas canvas, Paint paint) {
@@ -56,6 +55,7 @@ public class Clock extends View {
         canvas.drawCircle(width / 2, height / 2, 20, paint);
         paint.setStyle(Paint.Style.STROKE);
         canvas.drawCircle(width / 2, height / 2, radius, paint);
+
     }
 
     private void drawHours(Canvas canvas, Paint paint) {
@@ -66,6 +66,7 @@ public class Clock extends View {
             canvas.rotate(-30, width / 2, height / 2);
 
         }
+
         int hoursText = 12;
         for (int i = 1; i <= 12; i++) {
             canvas.drawText(String.valueOf(hoursText), width / 2 - 20,
@@ -76,7 +77,9 @@ public class Clock extends View {
             }
             canvas.rotate(-30, width / 2, height / 2);
             hoursText--;
+
         }
+
     }
 
 
@@ -96,8 +99,13 @@ public class Clock extends View {
             }
             if (seconds == i) {
                 canvas.drawLine(width / 2, height / 2, width / 2,
-                        height / 2 - radius, paint);
+                        height / 2 - radius + 30, paint);
+
             }
+
         }
+
     }
+
 }
+

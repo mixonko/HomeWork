@@ -14,5 +14,6 @@
     <string name="dz3_button1">Log in</string>
     <string name="dz3_button2">Create account</string>
     <string name="dz3_text_forgot"><u>Forgot your username/password?</u></string>
-    <string name="dz4_text_dz4">dz4</string>
+    <string name="dz4_textBytton_clock">Часы</string>
+    <string name="dz4_textButton_diagram">Диаграмма</string>
 </resources>

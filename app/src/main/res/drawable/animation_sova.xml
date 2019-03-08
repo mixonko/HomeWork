@@ -4,19 +4,19 @@
 
     <item
         android:drawable="@drawable/sova_anmation_1"
-        android:duration="150" />
+        android:duration="500" />
 
     <item
         android:drawable="@drawable/sova_anmation_2"
-        android:duration="150" />
+        android:duration="100" />
 
     <item
         android:drawable="@drawable/sova_anmation_3"
-        android:duration="150" />
+        android:duration="100" />
 
     <item
         android:drawable="@drawable/sova_anmation_2"
-        android:duration="150" />
+        android:duration="100" />
 
 
 
