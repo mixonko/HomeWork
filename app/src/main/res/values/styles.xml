@@ -41,4 +41,10 @@
     <style name="Dz3Button3" parent="Dz3Button">
         <item name="android:background">@color/dz3_blue</item>
     </style>
+
+    <style name="DownUpActivity" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/activity_down_up_enter</item>
+        <item name="android:activityOpenExitAnimation">@anim/activity_down_up_exit</item>
+
+    </style>
 </resources>
