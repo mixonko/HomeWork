@@ -9,25 +9,25 @@ import android.view.View;
 
 import java.util.Calendar;
 
-public class Clock extends View {
+public class ClockView extends View {
     private float width, height, min, radius;
     private Paint paint = new Paint();
     private Calendar calendar;
     int hours, minutes, seconds;
 
-    public Clock(Context context) {
+    public ClockView(Context context) {
         super(context);
     }
 
-    public Clock(Context context, @Nullable AttributeSet attrs) {
+    public ClockView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public Clock(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public ClockView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    public Clock(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public ClockView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 

@@ -23,7 +23,7 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <dz4.Clock
+        <dz4.ClockView
             android:id="@+id/dz4Clock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

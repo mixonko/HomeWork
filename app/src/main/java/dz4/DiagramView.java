@@ -13,25 +13,25 @@ import java.util.List;
 import java.util.Random;
 
 
-public class Diagram extends View {
+public class DiagramView extends View {
     float paddingLeft, paddingTop, paddingRight, paddingBottom,
             startAngle, degrees, canvasRotate = 0;
     private Paint paint;
     int sum, min;
 
-    public Diagram(Context context) {
+    public DiagramView(Context context) {
         super(context);
     }
 
-    public Diagram(Context context, @Nullable AttributeSet attrs) {
+    public DiagramView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public Diagram(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public DiagramView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
-    public Diagram(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public DiagramView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
