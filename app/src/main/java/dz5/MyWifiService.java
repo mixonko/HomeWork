@@ -15,20 +15,18 @@ import android.util.Log;
 public class MyWifiService extends Service {
     private BroadcastReceiver broadcastReceiver;
     private IntentFilter intentFilter;
-    private Boolean  wifiState;
+    private Boolean wifiState;
     private Intent intent;
 
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        Log.i("service", "onBind: ");
         registerReceiver();
         return new Binder();
     }
 
     @Override
     public boolean onUnbind(Intent intent) {
-        Log.i("service", "onUnbind: ");
         unregisterReceiver();
         return super.onUnbind(intent);
     }
@@ -43,12 +41,10 @@ public class MyWifiService extends Service {
 
                 int extra = intent.getIntExtra(WifiManager.EXTRA_WIFI_STATE, 0);
                 if (extra == WifiManager.WIFI_STATE_ENABLED) {
-                    Log.i("qqq", "ВКЛЮЧЕН");
                     wifiState = true;
 
                 }
                 if (extra == WifiManager.WIFI_STATE_DISABLED) {
-                    Log.i("qqq", "ВЫКЛЮЧЕН");
                     wifiState = false;
                 }
 
@@ -65,14 +61,12 @@ public class MyWifiService extends Service {
         unregisterReceiver(broadcastReceiver);
     }
 
-    private void localReceiver (Boolean wifiState){
-        intent = new Intent();
-        intent.setAction("wifi");
+    private void localReceiver(Boolean wifiState) {
+        intent = new Intent("wifi");
         intent.putExtra("wifi", wifiState);
         LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(this);
         localBroadcastManager.sendBroadcast(intent);
 
     }
-
 
 }

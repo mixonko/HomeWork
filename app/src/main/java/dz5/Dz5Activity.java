@@ -20,23 +20,14 @@ public class Dz5Activity extends Activity {
     private Intent intentService;
     private ServiceConnection serviceConnection;
     private ImageView imageView;
+    private Boolean wifi;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dz5);
-
-
-        IntentFilter filter= new IntentFilter();
-        filter.addAction("wifi");
-
-        BroadcastReceiver localBroadcastManager = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                Log.i("УРА", String.valueOf(intent.getBooleanExtra("wifi", false)));
-            }
-        };
-        LocalBroadcastManager.getInstance(this).registerReceiver(localBroadcastManager, filter);
+        registerLocalReceiver();
+        imageView = (ImageView) findViewById(R.id.wifi);
 
     }
 
@@ -51,25 +42,39 @@ public class Dz5Activity extends Activity {
     protected void onStop() {
         super.onStop();
         unbindService(serviceConnection);
-        Log.i("service", "onStop: ");
     }
 
-    public void onBindService () {
+
+    public void onBindService() {
         intentService = new Intent(this, MyWifiService.class);
         serviceConnection = new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
-                Log.i("service", "onServiceConnected: ");
             }
 
             @Override
             public void onServiceDisconnected(ComponentName componentName) {
-                Log.i("service", "onServiceDisconnected: ");
             }
         };
 
-        intentService = new Intent(this, MyWifiService.class);
         bindService(intentService, serviceConnection, BIND_AUTO_CREATE);
-        Log.i("service", "onStart: ");
+    }
+
+    public void registerLocalReceiver() {
+        IntentFilter filter = new IntentFilter("wifi");
+
+        BroadcastReceiver localBroadcastManager = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                Log.i("УРА", String.valueOf(intent.getBooleanExtra("wifi", false)));
+                wifi = intent.getBooleanExtra("wifi", false);
+                if (wifi) {
+                    imageView.setImageResource(R.drawable.wifi_is_on);
+                } else {
+                    imageView.setImageResource(R.drawable.wifi_is_off);
+                }
+            }
+        };
+        LocalBroadcastManager.getInstance(this).registerReceiver(localBroadcastManager, filter);
     }
 }
