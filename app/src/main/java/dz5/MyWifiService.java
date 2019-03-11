@@ -10,7 +10,6 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
 
 public class MyWifiService extends Service {
     private BroadcastReceiver broadcastReceiver;
@@ -30,7 +29,6 @@ public class MyWifiService extends Service {
         unregisterReceiver();
         return super.onUnbind(intent);
     }
-
 
     private void registerReceiver() {
         intentFilter = new IntentFilter();

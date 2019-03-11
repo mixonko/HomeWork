@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
 import android.widget.ImageView;
 
 import test.com.homework.R;
@@ -44,7 +43,6 @@ public class Dz5Activity extends Activity {
         unbindService(serviceConnection);
     }
 
-
     public void onBindService() {
         intentService = new Intent(this, MyWifiService.class);
         serviceConnection = new ServiceConnection() {
@@ -66,7 +64,6 @@ public class Dz5Activity extends Activity {
         BroadcastReceiver localBroadcastManager = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                Log.i("УРА", String.valueOf(intent.getBooleanExtra("wifi", false)));
                 wifi = intent.getBooleanExtra("wifi", false);
                 if (wifi) {
                     imageView.setImageResource(R.drawable.wifi_is_on);
