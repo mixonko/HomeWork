@@ -20,12 +20,13 @@ public class Dz5Activity extends Activity {
     private ServiceConnection serviceConnection;
     private ImageView imageView;
     private Boolean wifi;
+    private BroadcastReceiver localBroadcastManager;
+    private MyWifiService myService;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dz5);
-        registerLocalReceiver();
         imageView = (ImageView) findViewById(R.id.wifi);
 
     }
@@ -34,6 +35,7 @@ public class Dz5Activity extends Activity {
     protected void onStart() {
         super.onStart();
         onBindService();
+        registerLocalReceiver();
 
     }
 
@@ -41,9 +43,10 @@ public class Dz5Activity extends Activity {
     protected void onStop() {
         super.onStop();
         unbindService(serviceConnection);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(localBroadcastManager);
     }
 
-    public void onBindService() {
+    private void onBindService() {
         intentService = new Intent(this, MyWifiService.class);
         serviceConnection = new ServiceConnection() {
             @Override
@@ -58,20 +61,27 @@ public class Dz5Activity extends Activity {
         bindService(intentService, serviceConnection, BIND_AUTO_CREATE);
     }
 
-    public void registerLocalReceiver() {
-        IntentFilter filter = new IntentFilter("wifi");
 
-        BroadcastReceiver localBroadcastManager = new BroadcastReceiver() {
+    private void registerLocalReceiver() {
+        IntentFilter filter = new IntentFilter(MyWifiService.MY_ACTION);
+
+        localBroadcastManager = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                wifi = intent.getBooleanExtra("wifi", false);
-                if (wifi) {
-                    imageView.setImageResource(R.drawable.wifi_is_on);
-                } else {
-                    imageView.setImageResource(R.drawable.wifi_is_off);
+                if (intent != null) {
+
+                    boolean wifi = intent.getBooleanExtra(MyWifiService.EXTRA_KEY, false);
+                    if (wifi == true) {
+                        imageView.setImageResource(R.drawable.wifi_is_on);
+                    } else {
+                        imageView.setImageResource(R.drawable.wifi_is_off);
+
+                    }
                 }
             }
         };
         LocalBroadcastManager.getInstance(this).registerReceiver(localBroadcastManager, filter);
     }
+
+
 }

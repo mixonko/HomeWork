@@ -14,14 +14,15 @@ import android.support.v4.content.LocalBroadcastManager;
 public class MyWifiService extends Service {
     private BroadcastReceiver broadcastReceiver;
     private IntentFilter intentFilter;
-    private Boolean wifiState;
     private Intent intent;
+    static final String EXTRA_KEY = "wifi";
+    static final String MY_ACTION = "my action";
 
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         registerReceiver();
-        return new Binder();
+        return new MyBinder();
     }
 
     @Override
@@ -30,23 +31,29 @@ public class MyWifiService extends Service {
         return super.onUnbind(intent);
     }
 
+    class MyBinder extends Binder {
+
+        MyWifiService getService() {
+            return MyWifiService.this;
+        }
+
+    }
+
     private void registerReceiver() {
         intentFilter = new IntentFilter();
-        intentFilter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
+        intentFilter.addAction(WifiManager.SUPPLICANT_CONNECTION_CHANGE_ACTION);
         broadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
 
-                int extra = intent.getIntExtra(WifiManager.EXTRA_WIFI_STATE, 0);
-                if (extra == WifiManager.WIFI_STATE_ENABLED) {
-                    wifiState = true;
-
+                final String action = intent.getAction();
+                if (action.equals(WifiManager.SUPPLICANT_CONNECTION_CHANGE_ACTION)) {
+                    if (intent.getBooleanExtra(WifiManager.EXTRA_SUPPLICANT_CONNECTED, false)) {
+                        localReceiverSend(true);
+                    } else {
+                        localReceiverSend(false);
+                    }
                 }
-                if (extra == WifiManager.WIFI_STATE_DISABLED) {
-                    wifiState = false;
-                }
-
-                localReceiver(wifiState);
 
             }
 
@@ -59,12 +66,15 @@ public class MyWifiService extends Service {
         unregisterReceiver(broadcastReceiver);
     }
 
-    private void localReceiver(Boolean wifiState) {
-        intent = new Intent("wifi");
-        intent.putExtra("wifi", wifiState);
+    private void localReceiverSend(Boolean wifiState) {
+        intent = new Intent(MY_ACTION);
+        intent.putExtra(EXTRA_KEY, wifiState);
         LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(this);
         localBroadcastManager.sendBroadcast(intent);
 
+
     }
+
+
 
 }
