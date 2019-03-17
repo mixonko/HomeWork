@@ -5,6 +5,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.wifi.WifiManager;
 import android.os.Binder;
 import android.os.IBinder;
@@ -15,8 +17,9 @@ public class MyWifiService extends Service {
     private BroadcastReceiver broadcastReceiver;
     private IntentFilter intentFilter;
     private Intent intent;
+    private boolean WifiConnected;
     static final String EXTRA_KEY = "wifi";
-    static final String MY_ACTION = "my action";
+    static final String MY_ACTION = "MY_WIFI_ACTION";
 
     @Nullable
     @Override
@@ -58,6 +61,7 @@ public class MyWifiService extends Service {
             }
 
         };
+
         registerReceiver(broadcastReceiver, intentFilter);
 
     }
@@ -66,15 +70,23 @@ public class MyWifiService extends Service {
         unregisterReceiver(broadcastReceiver);
     }
 
+    public void getWifiState() {
+        ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo mWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        WifiConnected = mWifi.isConnected();
+        localReceiverSend();
+    }
+
+    private void localReceiverSend() {
+        localReceiverSend(WifiConnected);
+    }
+
     private void localReceiverSend(Boolean wifiState) {
         intent = new Intent(MY_ACTION);
         intent.putExtra(EXTRA_KEY, wifiState);
         LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.getInstance(this);
         localBroadcastManager.sendBroadcast(intent);
 
-
     }
-
-
 
 }
