@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="test.com.homework">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,5 +23,7 @@
             android:name="dz4.Dz4ClockActivity"
             android:theme="@style/AnimationActivity" />
         <activity android:name="dz4.Dz4DiagramActivity" />
+        <activity android:name="dz5.Dz5Activity" />
+        <service android:name="dz5.MyWifiService" />
     </application>
 </manifest>
