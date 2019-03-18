@@ -25,5 +25,6 @@
         <activity android:name="dz4.Dz4DiagramActivity" />
         <activity android:name="dz5.Dz5Activity" />
         <service android:name="dz5.MyWifiService" />
+        <activity android:name="dz6.Dz6Activity" />
     </application>
 </manifest>
