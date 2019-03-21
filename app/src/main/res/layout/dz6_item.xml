@@ -32,7 +32,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageDelete"
+        android:id="@+id/deleteImage"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/ic_delete"

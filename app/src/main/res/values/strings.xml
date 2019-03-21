@@ -21,5 +21,6 @@
     <string name="dz6_text_dz6">dz6</string>
     <string name="dz6_text_save">save</string>
     <string name="dz6_text_cancel">cancel</string>
+    <string name="dz6_text_change">Редактировать</string>
 
 </resources>

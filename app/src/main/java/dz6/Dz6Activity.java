@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -19,6 +20,10 @@ public class Dz6Activity extends Activity implements View.OnClickListener {
     private ExampleAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private Button create;
+    public static final String firstName = "firstName";
+    public static final String secondName = "secondName";
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,18 +35,17 @@ public class Dz6Activity extends Activity implements View.OnClickListener {
         create = (Button) findViewById(R.id.create);
         create.setOnClickListener(this);
 
-
     }
 
-    public void createExampleList(){
-        exampleList= (ExampleItem.getList());
+    public void createExampleList() {
+        exampleList = (ExampleItem.getList());
     }
 
-    public void buildRecyclerView(){
+    public void buildRecyclerView() {
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
 
-        layoutManager = new LinearLayoutManager(this );
+        layoutManager = new LinearLayoutManager(this);
         adapter = new ExampleAdapter(exampleList);
 
         recyclerView.setLayoutManager(layoutManager);
@@ -49,6 +53,11 @@ public class Dz6Activity extends Activity implements View.OnClickListener {
         adapter.setOnItemClickListener(new ExampleAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
+                changeItem(position);
+            }
+
+            @Override
+            public void onDeleteClick(int position) {
                 removeItem(position);
             }
         });
@@ -65,13 +74,22 @@ public class Dz6Activity extends Activity implements View.OnClickListener {
         adapter.notifyDataSetChanged();
     }
 
-    public void createStudent(){
+    public void createStudent() {
         Intent intent = new Intent(this, CreateStudent.class);
         startActivity(intent);
     }
 
-    public void removeItem(int position){
+    public void removeItem(int position) {
         exampleList.remove(position);
         adapter.notifyItemRemoved(position);
+    }
+
+    public void changeItem(int position){
+        ExampleItem student = exampleList.get(position);
+//        Intent intent = new Intent(this, CreateStudent.class);
+//        intent.putExtra(firstName, student.getFirstName());
+//        intent.putExtra(secondName, student.getSecondName());
+
+//        startActivity(intent);
     }
 }
