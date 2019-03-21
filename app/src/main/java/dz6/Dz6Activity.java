@@ -6,8 +6,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -20,6 +23,7 @@ public class Dz6Activity extends Activity implements View.OnClickListener {
     private RecyclerView.LayoutManager layoutManager;
     private Button create;
     private ExampleItem student;
+    private EditText editText;
 
     public static ArrayList<ExampleItem> exampleList;
 
@@ -36,6 +40,7 @@ public class Dz6Activity extends Activity implements View.OnClickListener {
         createExampleList();
         buildRecyclerView();
 
+        editText = (EditText) findViewById(R.id.editText);
         create = (Button) findViewById(R.id.create);
         create.setOnClickListener(this);
 
@@ -92,7 +97,7 @@ public class Dz6Activity extends Activity implements View.OnClickListener {
 
     }
 
-    public void changeItem(int position){
+    public void changeItem(int position) {
         student = exampleList.get(position);
         Intent intent = new Intent(this, StudentInformation.class);
         intent.putExtra(FIRST_NAME, student.getFirstName());
@@ -101,4 +106,5 @@ public class Dz6Activity extends Activity implements View.OnClickListener {
 
         startActivity(intent);
     }
+
 }

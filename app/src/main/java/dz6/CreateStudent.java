@@ -32,9 +32,9 @@ public class CreateStudent extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.save:
-                if(firstName.getText().toString().length() != 0 && secondName.getText().toString().length() != 0){
+                if (firstName.getText().toString().length() != 0 && secondName.getText().toString().length() != 0) {
                     createStudent(firstName.getText().toString(), secondName.getText().toString());
                 }
                 break;
@@ -44,9 +44,9 @@ public class CreateStudent extends Activity implements View.OnClickListener {
         }
     }
 
-    private void createStudent(String firstName, String secondName){
+    private void createStudent(String firstName, String secondName) {
         Dz6Activity.exampleList.add(new ExampleItem(firstName, secondName));
-        Toast.makeText(this, secondName + " " +firstName + " добавлен", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, secondName + " " + firstName + " добавлен", Toast.LENGTH_LONG).show();
         finish();
     }
 }

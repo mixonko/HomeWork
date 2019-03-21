@@ -35,8 +35,8 @@ public class StudentInformation extends Activity implements View.OnClickListener
         save = (Button) findViewById(R.id.save);
         cancel = (Button) findViewById(R.id.cancel);
         change = (Button) findViewById(R.id.change);
-        layoutView = (LinearLayout) findViewById (R.id.layoutView);
-        layoutChange = (LinearLayout) findViewById (R.id.layoutChange);
+        layoutView = (LinearLayout) findViewById(R.id.layoutView);
+        layoutChange = (LinearLayout) findViewById(R.id.layoutChange);
 
         save.setOnClickListener(this);
         cancel.setOnClickListener(this);
@@ -53,7 +53,7 @@ public class StudentInformation extends Activity implements View.OnClickListener
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.change:
                 change();
                 break;
@@ -66,7 +66,7 @@ public class StudentInformation extends Activity implements View.OnClickListener
         }
     }
 
-    private void change(){
+    private void change() {
         layoutView.setVisibility(View.INVISIBLE);
         layoutChange.setVisibility(View.VISIBLE);
         firstNameEt.setText(firstName);
@@ -74,7 +74,7 @@ public class StudentInformation extends Activity implements View.OnClickListener
     }
 
 
-    private void saveChanges(){
+    private void saveChanges() {
         ExampleItem student = exampleList.get(position);
         student.setFirstName(firstNameEt.getText().toString());
         student.setSecondName(secondNameEt.getText().toString());
