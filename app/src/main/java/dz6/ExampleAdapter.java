@@ -12,23 +12,45 @@ import java.util.ArrayList;
 
 import test.com.homework.R;
 
-public class ExampleAdapter extends RecyclerView.Adapter <ExampleAdapter.ExampleViewHolder> {
+public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleViewHolder> {
     private ArrayList<ExampleItem> exampleList;
-    public static class ExampleViewHolder extends RecyclerView.ViewHolder{
-    public ImageView imageView;
-    public TextView firstName;
-    public TextView secondName;
+    private OnItemClickListener listener;
 
-        public ExampleViewHolder(@NonNull View itemView) {
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
+
+    public static class ExampleViewHolder extends RecyclerView.ViewHolder {
+        public ImageView imageView;
+        public TextView firstName;
+        public TextView secondName;
+
+        public ExampleViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
             imageView = itemView.findViewById(R.id.image);
             firstName = itemView.findViewById(R.id.firstName);
             secondName = itemView.findViewById(R.id.secondName);
 
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            listener.onItemClick(position);
+                        }
+                    }
+                }
+            });
+
         }
     }
 
-    public ExampleAdapter(ArrayList<ExampleItem> exampleList){
+    public ExampleAdapter(ArrayList<ExampleItem> exampleList) {
         this.exampleList = exampleList;
     }
 
@@ -36,7 +58,7 @@ public class ExampleAdapter extends RecyclerView.Adapter <ExampleAdapter.Example
     @Override
     public ExampleViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.dz6_item, viewGroup, false);
-        ExampleViewHolder evh = new ExampleViewHolder(v);
+        ExampleViewHolder evh = new ExampleViewHolder(v, listener);
         return evh;
 
     }
