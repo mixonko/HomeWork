@@ -7,42 +7,79 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import test.com.homework.R;
 
+import static dz6.Dz6Activity.exampleList;
+
 public class StudentInformation extends Activity implements View.OnClickListener {
-    TextView firstNameTv, secontNameTv;
-    EditText firstNameEt, secondNameEt;
-    Button save, cancel, change;
-    String firstName, secondName;
+    private TextView firstNameTv, secondNameTv;
+    private EditText firstNameEt, secondNameEt;
+    private Button save, cancel, change;
+    private String firstName, secondName;
+    private LinearLayout layoutView, layoutChange;
+    private int position;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.student_information);
         firstNameTv = (TextView) findViewById(R.id.firstNameTv);
-        secontNameTv = (TextView) findViewById(R.id.secondNameTv);
+        secondNameTv = (TextView) findViewById(R.id.secondNameTv);
         firstNameEt = (EditText) findViewById(R.id.firstNameEt);
         secondNameEt = (EditText) findViewById(R.id.secondNameEt);
         save = (Button) findViewById(R.id.save);
         cancel = (Button) findViewById(R.id.cancel);
         change = (Button) findViewById(R.id.change);
+        layoutView = (LinearLayout) findViewById (R.id.layoutView);
+        layoutChange = (LinearLayout) findViewById (R.id.layoutChange);
 
         save.setOnClickListener(this);
         cancel.setOnClickListener(this);
         change.setOnClickListener(this);
 
         Intent intent = getIntent();
-        firstName = intent.getStringExtra(Dz6Activity.firstName);
-        secondName = intent.getStringExtra(Dz6Activity.secondName);
+        firstName = intent.getStringExtra(Dz6Activity.FIRST_NAME);
+        secondName = intent.getStringExtra(Dz6Activity.SECOND_NAME);
+        position = Integer.parseInt(intent.getStringExtra(Dz6Activity.POSITION));
 
         firstNameTv.setText(firstName);
-        secontNameTv.setText(secondName);
+        secondNameTv.setText(secondName);
     }
 
     @Override
     public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.change:
+                change();
+                break;
+            case R.id.save:
+                saveChanges();
+                break;
+            case R.id.cancel:
+                finish();
+                break;
+        }
+    }
+
+    private void change(){
+        layoutView.setVisibility(View.INVISIBLE);
+        layoutChange.setVisibility(View.VISIBLE);
+        firstNameEt.setText(firstName);
+        secondNameEt.setText(secondName);
+    }
+
+
+    private void saveChanges(){
+        ExampleItem student = exampleList.get(position);
+        student.setFirstName(firstNameEt.getText().toString());
+        student.setSecondName(secondNameEt.getText().toString());
+        Toast.makeText(this, "информация обновлена", Toast.LENGTH_LONG).show();
+        finish();
 
     }
 }

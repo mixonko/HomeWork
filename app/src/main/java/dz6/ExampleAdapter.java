@@ -18,6 +18,7 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
 
     public interface OnItemClickListener {
         void onItemClick(int position);
+
         void onDeleteClick(int position);
     }
 

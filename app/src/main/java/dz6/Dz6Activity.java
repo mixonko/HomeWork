@@ -15,13 +15,17 @@ import java.util.ArrayList;
 import test.com.homework.R;
 
 public class Dz6Activity extends Activity implements View.OnClickListener {
-    public static ArrayList<ExampleItem> exampleList;
     private RecyclerView recyclerView;
     private ExampleAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private Button create;
-    public static final String firstName = "firstName";
-    public static final String secondName = "secondName";
+    private ExampleItem student;
+
+    public static ArrayList<ExampleItem> exampleList;
+
+    public static final String FIRST_NAME = "FIRST_NAME";
+    public static final String SECOND_NAME = "SECOND_NAME";
+    public static final String POSITION = "POSITION";
 
 
     @Override
@@ -80,16 +84,21 @@ public class Dz6Activity extends Activity implements View.OnClickListener {
     }
 
     public void removeItem(int position) {
+        Toast.makeText(this, exampleList.get(position).getSecondName() + " " +
+                exampleList.get(position).getFirstName() + " удален", Toast.LENGTH_LONG).show();
         exampleList.remove(position);
         adapter.notifyItemRemoved(position);
+
+
     }
 
     public void changeItem(int position){
-        ExampleItem student = exampleList.get(position);
-//        Intent intent = new Intent(this, CreateStudent.class);
-//        intent.putExtra(firstName, student.getFirstName());
-//        intent.putExtra(secondName, student.getSecondName());
+        student = exampleList.get(position);
+        Intent intent = new Intent(this, StudentInformation.class);
+        intent.putExtra(FIRST_NAME, student.getFirstName());
+        intent.putExtra(SECOND_NAME, student.getSecondName());
+        intent.putExtra(POSITION, String.valueOf(position));
 
-//        startActivity(intent);
+        startActivity(intent);
     }
 }
