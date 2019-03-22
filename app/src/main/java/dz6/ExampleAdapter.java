@@ -5,15 +5,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import test.com.homework.R;
 
 public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleViewHolder> {
     private ArrayList<ExampleItem> exampleList;
+    private ArrayList<ExampleItem> exampleListFull;
     private OnItemClickListener listener;
 
     public interface OnItemClickListener {
@@ -68,6 +72,7 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
 
     public ExampleAdapter(ArrayList<ExampleItem> exampleList) {
         this.exampleList = exampleList;
+        exampleListFull = new ArrayList<>(exampleList);
     }
 
     @NonNull
@@ -91,4 +96,10 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
     public int getItemCount() {
         return exampleList.size();
     }
+
+    public void filterList(ArrayList<ExampleItem> filteredList) {
+        exampleList = filteredList;
+        notifyDataSetChanged();
+    }
+
 }

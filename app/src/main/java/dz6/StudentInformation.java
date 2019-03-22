@@ -22,12 +22,14 @@ public class StudentInformation extends Activity implements View.OnClickListener
     private String firstName, secondName;
     private LinearLayout layoutView, layoutChange;
     private int position;
+    private ExampleItem student;
+
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.student_information);
+        setContentView(R.layout.dz6_student_information);
         firstNameTv = (TextView) findViewById(R.id.firstNameTv);
         secondNameTv = (TextView) findViewById(R.id.secondNameTv);
         firstNameEt = (EditText) findViewById(R.id.firstNameEt);
@@ -43,9 +45,10 @@ public class StudentInformation extends Activity implements View.OnClickListener
         change.setOnClickListener(this);
 
         Intent intent = getIntent();
-        firstName = intent.getStringExtra(Dz6Activity.FIRST_NAME);
-        secondName = intent.getStringExtra(Dz6Activity.SECOND_NAME);
         position = Integer.parseInt(intent.getStringExtra(Dz6Activity.POSITION));
+        student = exampleList.get(position);
+        firstName = student.getFirstName();
+        secondName = student.getSecondName();
 
         firstNameTv.setText(firstName);
         secondNameTv.setText(secondName);

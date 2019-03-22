@@ -22,8 +22,7 @@ public class Dz6Activity extends Activity implements View.OnClickListener {
     private ExampleAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private Button create;
-    private ExampleItem student;
-    private EditText editText;
+    EditText editText;
 
     public static ArrayList<ExampleItem> exampleList;
 
@@ -37,13 +36,42 @@ public class Dz6Activity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dz6);
 
+
         createExampleList();
         buildRecyclerView();
 
-        editText = (EditText) findViewById(R.id.editText);
         create = (Button) findViewById(R.id.create);
         create.setOnClickListener(this);
+        editText = (EditText) findViewById(R.id.editText);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                filter(editable.toString());
+            }
+        });
+
+    }
+
+    private void filter(String text) {
+        ArrayList<ExampleItem> filteredList = new ArrayList<>();
+
+        for (ExampleItem item : exampleList) {
+            if (item.getFirstName().toLowerCase().contains(text.toLowerCase())) {
+                filteredList.add(item);
+            }
+        }
+
+        adapter.filterList(filteredList);
     }
 
     public void createExampleList() {
@@ -77,6 +105,7 @@ public class Dz6Activity extends Activity implements View.OnClickListener {
         createStudent();
     }
 
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -94,16 +123,11 @@ public class Dz6Activity extends Activity implements View.OnClickListener {
         exampleList.remove(position);
         adapter.notifyItemRemoved(position);
 
-
     }
 
     public void changeItem(int position) {
-        student = exampleList.get(position);
         Intent intent = new Intent(this, StudentInformation.class);
-        intent.putExtra(FIRST_NAME, student.getFirstName());
-        intent.putExtra(SECOND_NAME, student.getSecondName());
         intent.putExtra(POSITION, String.valueOf(position));
-
         startActivity(intent);
     }
 
