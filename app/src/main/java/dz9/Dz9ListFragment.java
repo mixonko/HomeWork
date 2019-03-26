@@ -26,12 +26,18 @@ public class Dz9ListFragment extends Fragment implements View.OnClickListener {
     private RecyclerView.LayoutManager layoutManager;
     private Button create;
     private EditText editText;
+    private ListFragmentListener listener;
 
     public static ArrayList<Dz9ExampleItem> exampleList;
 
     public static final String FIRST_NAME = "FIRST_NAME";
     public static final String SECOND_NAME = "SECOND_NAME";
     public static final String POSITION = "POSITION";
+
+    public interface ListFragmentListener{
+        void onItemClick(int position);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -87,7 +93,8 @@ public class Dz9ListFragment extends Fragment implements View.OnClickListener {
         adapter.setOnItemClickListener(new Dz9ExampleAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                changeItem(position);
+         //       changeItem(position);
+                listener.onItemClick(position);
             }
 
             @Override

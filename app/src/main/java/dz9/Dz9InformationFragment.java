@@ -19,6 +19,7 @@ import test.com.homework.R;
 import static dz9.Dz9ListFragment.exampleList;
 
 public class Dz9InformationFragment extends Fragment implements View.OnClickListener {
+
     private TextView firstNameTv, secondNameTv;
     private EditText firstNameEt, secondNameEt;
     private Button save, cancel, change;
@@ -29,30 +30,31 @@ public class Dz9InformationFragment extends Fragment implements View.OnClickList
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.dz9_fragment_b, container, false);
-        firstNameTv = (TextView) v.findViewById(R.id.firstNameTv);
-        secondNameTv = (TextView) v.findViewById(R.id.secondNameTv);
-        firstNameEt = (EditText) v.findViewById(R.id.firstNameEt);
-        secondNameEt = (EditText) v.findViewById(R.id.secondNameEt);
-        save = (Button) v.findViewById(R.id.save);
-        cancel = (Button) v.findViewById(R.id.cancel);
-        change = (Button) v.findViewById(R.id.change);
-        layoutView = (LinearLayout) v.findViewById(R.id.layoutView);
-        layoutChange = (LinearLayout) v.findViewById(R.id.layoutChange);
-
-        save.setOnClickListener(this);
-        cancel.setOnClickListener(this);
-        change.setOnClickListener(this);
-
-        Intent intent = getIntent();
-        position = Integer.parseInt(intent.getStringExtra(Dz9ListFragment.POSITION));
-        student = exampleList.get(position);
-        firstName = student.getFirstName();
-        secondName = student.getSecondName();
-
-        firstNameTv.setText(firstName);
-        secondNameTv.setText(secondName);
-        return v;
+//        View v = inflater.inflate(R.layout.dz9_fragment_b, container, false);
+//        firstNameTv = (TextView) v.findViewById(R.id.firstNameTv);
+//        secondNameTv = (TextView) v.findViewById(R.id.secondNameTv);
+//        firstNameEt = (EditText) v.findViewById(R.id.firstNameEt);
+//        secondNameEt = (EditText) v.findViewById(R.id.secondNameEt);
+//        save = (Button) v.findViewById(R.id.save);
+//        cancel = (Button) v.findViewById(R.id.cancel);
+//        change = (Button) v.findViewById(R.id.change);
+//        layoutView = (LinearLayout) v.findViewById(R.id.layoutView);
+//        layoutChange = (LinearLayout) v.findViewById(R.id.layoutChange);
+//
+//        save.setOnClickListener(this);
+//        cancel.setOnClickListener(this);
+//        change.setOnClickListener(this);
+//
+//        Intent intent = getIntent();
+//        position = Integer.parseInt(intent.getStringExtra(Dz9ListFragment.POSITION));
+//        student = exampleList.get(position);
+//        firstName = student.getFirstName();
+//        secondName = student.getSecondName();
+//
+//        firstNameTv.setText(firstName);
+//        secondNameTv.setText(secondName);
+  //      return v;
+        return null;
     }
 
 
@@ -66,7 +68,7 @@ public class Dz9InformationFragment extends Fragment implements View.OnClickList
                 saveChanges();
                 break;
             case R.id.cancel:
-                finish();
+ //         finish();
                 break;
         }
     }
@@ -84,7 +86,9 @@ public class Dz9InformationFragment extends Fragment implements View.OnClickList
         student.setFirstName(firstNameEt.getText().toString());
         student.setSecondName(secondNameEt.getText().toString());
         Toast.makeText(getContext(), "информация обновлена", Toast.LENGTH_LONG).show();
-        finish();
+       // finish();
 
     }
+
+
 }
