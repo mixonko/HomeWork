@@ -31,8 +31,6 @@ public class Dz9ListFragment extends Fragment implements View.OnClickListener {
 
     public static ArrayList<Dz9ExampleItem> exampleList;
 
-    public static final String FIRST_NAME = "FIRST_NAME";
-    public static final String SECOND_NAME = "SECOND_NAME";
     public static final String POSITION = "POSITION";
 
     public interface ListFragmentListener{
@@ -44,13 +42,16 @@ public class Dz9ListFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.dz9_fragment_a, container, false);
 
-        createExampleList();
-        buildRecyclerView();
+
 
         create = (Button) v.findViewById(R.id.create);
         create.setOnClickListener(this);
         editText = (EditText) v.findViewById(R.id.editText);
         recyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
+
+        createExampleList();
+        buildRecyclerView();
+
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -67,7 +68,15 @@ public class Dz9ListFragment extends Fragment implements View.OnClickListener {
                 filter(editable.toString());
             }
         });
+
         return v;
+    }
+
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
     }
 
     private void filter(String text) {
@@ -88,13 +97,13 @@ public class Dz9ListFragment extends Fragment implements View.OnClickListener {
 
     public void buildRecyclerView() {
 
-//        recyclerView.setHasFixedSize(true);
+        recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(getContext());
         adapter = new Dz9ExampleAdapter(exampleList);
 
-//        recyclerView.setLayoutManager(layoutManager);
-//        recyclerView.setAdapter(adapter);
+         recyclerView.setLayoutManager(layoutManager);
+         recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(new Dz9ExampleAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
@@ -115,11 +124,11 @@ public class Dz9ListFragment extends Fragment implements View.OnClickListener {
     }
 
 
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        adapter.notifyDataSetChanged();
-//    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        adapter.notifyDataSetChanged();
+    }
 
     public void createStudent() {
         Intent intent = new Intent(getContext(), Dz9CreateStudent.class);

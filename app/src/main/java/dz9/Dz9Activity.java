@@ -1,5 +1,6 @@
 package dz9;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
@@ -23,12 +24,16 @@ public class Dz9Activity extends FragmentActivity implements Dz9ListFragment.Lis
 
 
         FrameLayout conteinerB = (FrameLayout)findViewById(R.id.conteiner_b);
-        if(conteinerB == null){
-            phoneView();
-        }else{
-            tabletView();
+        if (conteinerB == null){
+            tablet = false;
         }
 
+
+        if(tablet){
+            tabletView();
+        }else{
+            phoneView();
+        }
 
     }
 
@@ -38,6 +43,12 @@ public class Dz9Activity extends FragmentActivity implements Dz9ListFragment.Lis
                 .commit();
     }
 
+    private void phoneInformatin(int position){
+        Intent intent = new Intent(this, Dz9StudentInformation.class);
+        intent.putExtra(Dz9ListFragment.POSITION, String.valueOf(position));
+        startActivity(intent);
+    }
+
     private void tabletView(){
         getSupportFragmentManager().beginTransaction().
                 replace(R.id.conteiner_a, listFragment)
@@ -45,8 +56,19 @@ public class Dz9Activity extends FragmentActivity implements Dz9ListFragment.Lis
                 .commit();
     }
 
+    private void tabletInformatin(int position){
+
+    }
+
     @Override
     public void onItemClick(int position) {
-        Toast.makeText(this, String.valueOf(position), Toast.LENGTH_LONG).show();
+        if(tablet){
+            tabletInformatin(position);
+        }else{
+            phoneInformatin(position);
+        }
     }
+
+
+
 }

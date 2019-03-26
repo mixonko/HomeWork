@@ -30,31 +30,31 @@ public class Dz9InformationFragment extends Fragment implements View.OnClickList
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        View v = inflater.inflate(R.layout.dz9_fragment_b, container, false);
-//        firstNameTv = (TextView) v.findViewById(R.id.firstNameTv);
-//        secondNameTv = (TextView) v.findViewById(R.id.secondNameTv);
-//        firstNameEt = (EditText) v.findViewById(R.id.firstNameEt);
-//        secondNameEt = (EditText) v.findViewById(R.id.secondNameEt);
-//        save = (Button) v.findViewById(R.id.save);
-//        cancel = (Button) v.findViewById(R.id.cancel);
-//        change = (Button) v.findViewById(R.id.change);
-//        layoutView = (LinearLayout) v.findViewById(R.id.layoutView);
-//        layoutChange = (LinearLayout) v.findViewById(R.id.layoutChange);
-//
-//        save.setOnClickListener(this);
-//        cancel.setOnClickListener(this);
-//        change.setOnClickListener(this);
-//
-//        Intent intent = getIntent();
-//        position = Integer.parseInt(intent.getStringExtra(Dz9ListFragment.POSITION));
+        View v = inflater.inflate(R.layout.dz9_fragment_b, container, false);
+        firstNameTv = (TextView) v.findViewById(R.id.firstNameTv);
+        secondNameTv = (TextView) v.findViewById(R.id.secondNameTv);
+        firstNameEt = (EditText) v.findViewById(R.id.firstNameEt);
+        secondNameEt = (EditText) v.findViewById(R.id.secondNameEt);
+        save = (Button) v.findViewById(R.id.save);
+        cancel = (Button) v.findViewById(R.id.cancel);
+        change = (Button) v.findViewById(R.id.change);
+        layoutView = (LinearLayout) v.findViewById(R.id.layoutView);
+        layoutChange = (LinearLayout) v.findViewById(R.id.layoutChange);
+
+        save.setOnClickListener(this);
+        cancel.setOnClickListener(this);
+        change.setOnClickListener(this);
+
+        //Intent intent = getIntent();
+        //position = Integer.parseInt(intent.getStringExtra(Dz9ListFragment.POSITION));
 //        student = exampleList.get(position);
 //        firstName = student.getFirstName();
 //        secondName = student.getSecondName();
 //
 //        firstNameTv.setText(firstName);
 //        secondNameTv.setText(secondName);
-  //      return v;
-        return null;
+        return v;
+
     }
 
 
