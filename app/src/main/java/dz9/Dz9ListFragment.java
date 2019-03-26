@@ -1,5 +1,6 @@
 package dz9;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -42,6 +43,10 @@ public class Dz9ListFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.dz9_fragment_a, container, false);
+
+        createExampleList();
+        buildRecyclerView();
+
         create = (Button) v.findViewById(R.id.create);
         create.setOnClickListener(this);
         editText = (EditText) v.findViewById(R.id.editText);
@@ -83,13 +88,13 @@ public class Dz9ListFragment extends Fragment implements View.OnClickListener {
 
     public void buildRecyclerView() {
 
-        recyclerView.setHasFixedSize(true);
+//        recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(getContext());
         adapter = new Dz9ExampleAdapter(exampleList);
 
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
+//        recyclerView.setLayoutManager(layoutManager);
+//        recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(new Dz9ExampleAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
@@ -110,11 +115,11 @@ public class Dz9ListFragment extends Fragment implements View.OnClickListener {
     }
 
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        adapter.notifyDataSetChanged();
-    }
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        adapter.notifyDataSetChanged();
+//    }
 
     public void createStudent() {
         Intent intent = new Intent(getContext(), Dz9CreateStudent.class);
@@ -133,5 +138,26 @@ public class Dz9ListFragment extends Fragment implements View.OnClickListener {
         Intent intent = new Intent(getContext(), Dz9InformationFragment.class);
         intent.putExtra(POSITION, String.valueOf(position));
         startActivity(intent);
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof ListFragmentListener ) {
+            listener = (ListFragmentListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement FragmentAListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
+    }
+
+    public void updateList(){
+        adapter.notifyDataSetChanged();
     }
 }

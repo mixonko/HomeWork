@@ -13,6 +13,7 @@ import dz4.Dz4ClockActivity;
 import dz4.Dz4DiagramActivity;
 import dz5.Dz5Activity;
 import dz6.Dz6Activity;
+import dz9.Dz9Activity;
 import test.com.homework.R;
 
 public class ChangeDzActivity extends Activity implements View.OnClickListener {
@@ -72,7 +73,7 @@ public class ChangeDzActivity extends Activity implements View.OnClickListener {
                 startActivity(new Intent(this, Dz6Activity.class));
                 break;
             case R.id.dz9:
-                startActivity(new Intent(this, Dz6Activity.class));
+                startActivity(new Intent(this, Dz9Activity.class));
                 break;
         }
     }

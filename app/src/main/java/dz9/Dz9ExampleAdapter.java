@@ -23,6 +23,7 @@ public class Dz9ExampleAdapter extends RecyclerView.Adapter<Dz9ExampleAdapter.Ex
         void onDeleteClick(int position);
     }
 
+
     public void setOnItemClickListener(OnItemClickListener listener) {
         this.listener = listener;
     }
@@ -75,7 +76,7 @@ public class Dz9ExampleAdapter extends RecyclerView.Adapter<Dz9ExampleAdapter.Ex
     @NonNull
     @Override
     public ExampleViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.dz6_item, viewGroup, false);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.dz9_item, viewGroup, false);
         ExampleViewHolder evh = new ExampleViewHolder(v, listener);
         return evh;
 
