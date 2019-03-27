@@ -42,8 +42,6 @@ public class Dz9ListFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.dz9_fragment_a, container, false);
 
-
-
         create = (Button) v.findViewById(R.id.create);
         create.setOnClickListener(this);
         editText = (EditText) v.findViewById(R.id.editText);
