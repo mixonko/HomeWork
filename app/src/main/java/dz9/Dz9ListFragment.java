@@ -154,7 +154,7 @@ public class Dz9ListFragment extends Fragment implements View.OnClickListener {
         listener = null;
     }
 
-    private void updateList() {
+    public void updateList() {
         adapter.notifyDataSetChanged();
     }
 }

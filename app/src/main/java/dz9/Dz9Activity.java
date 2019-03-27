@@ -28,7 +28,7 @@ public class Dz9Activity extends FragmentActivity implements Dz9ListFragment.Lis
 
 
         if(theTablet){
-            tabletView();
+            theTabletView();
         }else{
             phoneView();
         }
@@ -47,13 +47,13 @@ public class Dz9Activity extends FragmentActivity implements Dz9ListFragment.Lis
         startActivity(intent);
     }
 
-    private void tabletView(){
+    private void theTabletView(){
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.conteiner_a, listFragment)
                 .commit();
     }
 
-    private void tabletInformatin(int position){
+    private void theTabletInformatin(int position){
         if(informationFragment.isVisible()){
             getSupportFragmentManager().beginTransaction()
                     .detach(informationFragment)
@@ -71,7 +71,7 @@ public class Dz9Activity extends FragmentActivity implements Dz9ListFragment.Lis
     @Override
     public void onItemClick(int position) {
         if(theTablet){
-            tabletInformatin(position);
+            theTabletInformatin(position);
         }else{
             phoneInformatin(position);
         }

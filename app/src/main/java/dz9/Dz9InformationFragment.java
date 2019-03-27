@@ -110,7 +110,7 @@ public class Dz9InformationFragment extends Fragment implements View.OnClickList
         super.onAttach(context);
         if (context instanceof InformationFragmentListener ) {
             listener = (InformationFragmentListener) context;
-        }
+        } 
     }
 
     @Override
