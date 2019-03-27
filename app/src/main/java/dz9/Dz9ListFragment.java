@@ -33,7 +33,7 @@ public class Dz9ListFragment extends Fragment implements View.OnClickListener {
 
     public static final String POSITION = "POSITION";
 
-    public interface ListFragmentListener{
+    public interface ListFragmentListener {
         void onItemClick(int position);
     }
 
@@ -42,10 +42,16 @@ public class Dz9ListFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.dz9_fragment_a, container, false);
 
-        create = (Button) v.findViewById(R.id.create);
+        return v;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        create = (Button) getView().findViewById(R.id.create);
         create.setOnClickListener(this);
-        editText = (EditText) v.findViewById(R.id.editText);
-        recyclerView = (RecyclerView) v.findViewById(R.id.recyclerView);
+        editText = (EditText) getView().findViewById(R.id.editText);
+        recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerView);
 
         createExampleList();
         buildRecyclerView();
@@ -67,14 +73,6 @@ public class Dz9ListFragment extends Fragment implements View.OnClickListener {
             }
         });
 
-        return v;
-    }
-
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
     }
 
     private void filter(String text) {
@@ -89,23 +87,22 @@ public class Dz9ListFragment extends Fragment implements View.OnClickListener {
         adapter.filterList(filteredList);
     }
 
-    public void createExampleList() {
+    private void createExampleList() {
         exampleList = (Dz9ExampleItem.getList());
     }
 
-    public void buildRecyclerView() {
+    private void buildRecyclerView() {
 
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(getContext());
         adapter = new Dz9ExampleAdapter(exampleList);
 
-         recyclerView.setLayoutManager(layoutManager);
-         recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
         adapter.setOnItemClickListener(new Dz9ExampleAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-         //       changeItem(position);
                 listener.onItemClick(position);
             }
 
@@ -121,19 +118,18 @@ public class Dz9ListFragment extends Fragment implements View.OnClickListener {
         createStudent();
     }
 
-
     @Override
     public void onResume() {
         super.onResume();
-        adapter.notifyDataSetChanged();
+        updateList();
     }
 
-    public void createStudent() {
+    private void createStudent() {
         Intent intent = new Intent(getContext(), Dz9CreateStudent.class);
         startActivity(intent);
     }
 
-    public void removeItem(int position) {
+    private void removeItem(int position) {
         Toast.makeText(getContext(), exampleList.get(position).getSecondName() + " " +
                 exampleList.get(position).getFirstName() + " удален", Toast.LENGTH_LONG).show();
         exampleList.remove(position);
@@ -141,16 +137,10 @@ public class Dz9ListFragment extends Fragment implements View.OnClickListener {
 
     }
 
-    public void changeItem(int position) {
-        Intent intent = new Intent(getContext(), Dz9InformationFragment.class);
-        intent.putExtra(POSITION, String.valueOf(position));
-        startActivity(intent);
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof ListFragmentListener ) {
+        if (context instanceof ListFragmentListener) {
             listener = (ListFragmentListener) context;
         } else {
             throw new RuntimeException(context.toString()
@@ -164,7 +154,7 @@ public class Dz9ListFragment extends Fragment implements View.OnClickListener {
         listener = null;
     }
 
-    public void updateList(){
+    private void updateList() {
         adapter.notifyDataSetChanged();
     }
 }

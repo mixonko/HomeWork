@@ -8,10 +8,10 @@ import android.widget.FrameLayout;
 
 import test.com.homework.R;
 
-public class Dz9Activity extends FragmentActivity implements Dz9ListFragment.ListFragmentListener {
+public class Dz9Activity extends FragmentActivity implements Dz9ListFragment.ListFragmentListener, Dz9InformationFragment.InformationFragmentListener {
     private Dz9ListFragment listFragment;
     private Dz9InformationFragment informationFragment;
-    private Boolean theTablet = true;
+    public static Boolean theTablet = true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -78,5 +78,11 @@ public class Dz9Activity extends FragmentActivity implements Dz9ListFragment.Lis
     }
 
 
-
+    @Override
+    public void onSave() {
+        listFragment.updateList();
+        getSupportFragmentManager().beginTransaction()
+                .remove(informationFragment)
+                .commit();
+    }
 }

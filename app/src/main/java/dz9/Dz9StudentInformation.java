@@ -16,7 +16,6 @@ public class Dz9StudentInformation extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dz9_student_information);
 
-
         informationFragment = new Dz9InformationFragment();
         getSupportFragmentManager().beginTransaction().
                 replace(R.id.conteiner_b, informationFragment)
