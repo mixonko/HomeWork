@@ -13,10 +13,11 @@ import dz4.Dz4ClockActivity;
 import dz4.Dz4DiagramActivity;
 import dz5.Dz5Activity;
 import dz6.Dz6Activity;
+import dz9.Dz9Activity;
 import test.com.homework.R;
 
 public class ChangeDzActivity extends Activity implements View.OnClickListener {
-    private Button dz1, dz2, dz3, dz3Login, dz4Clock, dz4Diagram, dz5, dz6;
+    private Button dz1, dz2, dz3, dz3Login, dz4Clock, dz4Diagram, dz5, dz6, dz9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public class ChangeDzActivity extends Activity implements View.OnClickListener {
         dz4Diagram = (Button) findViewById(R.id.dz4Diagram);
         dz5 = (Button) findViewById(R.id.dz5);
         dz6 = (Button) findViewById(R.id.dz6);
+        dz9 = (Button) findViewById(R.id.dz9);
 
         dz1.setOnClickListener(this);
         dz2.setOnClickListener(this);
@@ -40,6 +42,7 @@ public class ChangeDzActivity extends Activity implements View.OnClickListener {
         dz4Diagram.setOnClickListener(this);
         dz5.setOnClickListener(this);
         dz6.setOnClickListener(this);
+        dz9.setOnClickListener(this);
     }
 
     @Override
@@ -68,6 +71,9 @@ public class ChangeDzActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.dz6:
                 startActivity(new Intent(this, Dz6Activity.class));
+                break;
+            case R.id.dz9:
+                startActivity(new Intent(this, Dz9Activity.class));
                 break;
         }
     }
