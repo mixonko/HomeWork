@@ -24,6 +24,8 @@
     <string name="dz6_text_change">Редактировать</string>
     <string name="dz9_text_dz9">dz9</string>
     <string name="dz9_text_save">save</string>
+    <string name="dz15_text_button">get contact</string>
+    <string name="dz15_text_dz15">dz15</string>
 
 
 </resources>

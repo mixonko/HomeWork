@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 import dz1.Dz1Activity;
+import dz15.Dz15Activity;
 import dz3.Dz3Activity;
 import dz3.LoginActivity;
 import dz4.Dz4ClockActivity;
@@ -17,7 +18,7 @@ import dz9.Dz9Activity;
 import test.com.homework.R;
 
 public class ChangeDzActivity extends Activity implements View.OnClickListener {
-    private Button dz1, dz2, dz3, dz3Login, dz4Clock, dz4Diagram, dz5, dz6, dz9;
+    private Button dz1, dz2, dz3, dz3Login, dz4Clock, dz4Diagram, dz5, dz6, dz9, dz15;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class ChangeDzActivity extends Activity implements View.OnClickListener {
         dz5 = (Button) findViewById(R.id.dz5);
         dz6 = (Button) findViewById(R.id.dz6);
         dz9 = (Button) findViewById(R.id.dz9);
+        dz15 = (Button) findViewById(R.id.dz15);
 
         dz1.setOnClickListener(this);
         dz2.setOnClickListener(this);
@@ -43,6 +45,7 @@ public class ChangeDzActivity extends Activity implements View.OnClickListener {
         dz5.setOnClickListener(this);
         dz6.setOnClickListener(this);
         dz9.setOnClickListener(this);
+        dz15.setOnClickListener(this);
     }
 
     @Override
@@ -74,6 +77,9 @@ public class ChangeDzActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.dz9:
                 startActivity(new Intent(this, Dz9Activity.class));
+                break;
+            case R.id.dz15:
+                startActivity(new Intent(this, Dz15Activity.class));
                 break;
         }
     }
