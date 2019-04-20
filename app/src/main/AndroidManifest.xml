@@ -2,6 +2,8 @@
     package="test.com.homework">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -31,5 +33,6 @@
         <activity android:name="dz9.Dz9Activity" />
         <activity android:name="dz9.Dz9CreateStudent" />
         <activity android:name="dz9.Dz9StudentInformation" />
+        <activity android:name="dz15.Dz15Activity" />
     </application>
 </manifest>
